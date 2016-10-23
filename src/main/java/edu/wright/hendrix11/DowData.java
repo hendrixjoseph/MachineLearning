@@ -1,5 +1,8 @@
 package edu.wright.hendrix11;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,5 +25,17 @@ public class DowData {
     private List<Double> percentChangeNextWeekPrice = new ArrayList<>();
     private List<Integer> daysToNextDividend = new ArrayList<>();
     private List<Double> percentReturnNextDividend = new ArrayList<>();
+
+    public DowData(String filename) throws IOException {
+        List<String> lines = Files.readAllLines(Paths.get(filename));
+
+        for(String line : lines) {
+            if(!line.startsWith("quarter")) {
+                String items[] = line.split(",");
+
+                quarter.add(Integer.parseInt(items[0]));
+            }
+        }
+    }
 
 }
