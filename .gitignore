@@ -1,5 +1,4 @@
 target/
 .idea/
 /*.iml
-src/main/resources/dow_jones_index.csv
-src/main/resources/dow_jones_index.txt
+src/main/resources/dow_jones_index.*
