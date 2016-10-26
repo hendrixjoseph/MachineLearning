@@ -5,9 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Joe on 10/21/2016.
@@ -31,8 +29,6 @@ public class DowData {
     private List<Double> percentReturnNextDividend = new ArrayList<>();
 
     private List<List> everything = new ArrayList<>();
-
-
 
     public DowData(String filename) throws IOException, ParseException {
         List<String> lines = Files.readAllLines(Paths.get(filename));
