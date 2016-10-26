@@ -27,6 +27,8 @@ public class DowData {
     private List<Double> percentReturnNextDividend = new ArrayList<>();
 
     public DowData(String filename) throws IOException {
+        System.out.println(Paths.get(filename).toAbsolutePath());
+
         List<String> lines = Files.readAllLines(Paths.get(filename));
 
         for(String line : lines) {

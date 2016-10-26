@@ -1,4 +1,4 @@
 target/
 .idea/
 /*.iml
-src/main/resources/dow_jones_index.*
+dow_jones_index.*

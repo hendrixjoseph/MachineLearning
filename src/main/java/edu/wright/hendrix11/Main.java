@@ -7,6 +7,6 @@ import java.io.IOException;
  */
 public class Main {
     public static void main(String[] args) throws IOException {
-        DowData data = new DowData("dow_jones_index.data");
+        DowData data = new DowData("dow_jones_index.csv");
     }
 }
