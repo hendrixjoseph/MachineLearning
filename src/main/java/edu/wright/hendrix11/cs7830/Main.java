@@ -1,4 +1,4 @@
-package edu.wright.hendrix11;
+package edu.wright.hendrix11.cs7830;
 
 import java.io.IOException;
 import java.text.ParseException;

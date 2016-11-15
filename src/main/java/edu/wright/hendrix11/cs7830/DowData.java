@@ -1,4 +1,6 @@
-package edu.wright.hendrix11;
+package edu.wright.hendrix11.cs7830;
+
+import edu.wright.hendrix11.StringParser;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -56,7 +58,7 @@ public class DowData {
 
                 int i = 0;
 
-                quarter.add(StringParser.parseInt(items[i++]));
+                quarter.add(edu.wright.hendrix11.StringParser.parseInt(items[i++]));
                 stock.add(items[i++]);
                 dayOfYear.add(StringParser.getDayOfYear(items[i++]));
                 open.add(StringParser.parseDollars(items[i++]));
