@@ -1,6 +1,6 @@
 package edu.wright.hendrix11.cs7830.machine;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+import edu.wright.hendrix11.cs7830.tools.Reader;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
