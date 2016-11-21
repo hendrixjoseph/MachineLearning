@@ -38,16 +38,28 @@ public class Stock {
         sorted = true;
     }
 
+    public int getYearOpen() {
+        assert sorted : "Please sort first.";
+
+        return data.get(0).getOpen();
+    }
+
+    public int getYearClose() {
+        assert sorted : "Please sort first.";
+
+        return data.get(data.size() -1 ).getClose();
+    }
+
     public double getIncrease() {
         assert sorted : "Please sort first.";
 
-        return data.get(data.size() -1 ).getClose() - data.get(0).getOpen();
+        return getYearClose() - getYearOpen();
     }
 
     public double getPercentIncrease() {
         assert sorted : "Please sort first.";
 
-        return getIncrease() / data.get(0).getOpen();
+        return getIncrease() / getYearOpen();
     }
 
     @Override

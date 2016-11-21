@@ -14,5 +14,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws IOException, ParseException {
         DowData data = new DowData("dow_jones_index.csv");
+
+        System.out.println(data.getIndex());
     }
 }

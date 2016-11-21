@@ -19,7 +19,6 @@ public class DowData {
 
     public DowData(String filename) throws IOException, ParseException {
 
-
         List<String> lines = Files.readAllLines(Paths.get(filename));
 
         for(String line : lines) {
@@ -64,5 +63,16 @@ public class DowData {
         stocks.values().forEach(Stock::sortData);
     }
 
+    public double getIndex() {
+        int sumYearOpens = 0;
+        int sumYearCloses = 0;
 
+
+        for(Stock stock : stocks.values()) {
+            sumYearOpens += stock.getYearOpen();
+            sumYearCloses += stock.getYearClose();
+        }
+
+        return (sumYearCloses - sumYearOpens) / (double)sumYearOpens;
+    }
 }
