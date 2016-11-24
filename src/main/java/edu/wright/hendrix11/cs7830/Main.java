@@ -1,12 +1,8 @@
 package edu.wright.hendrix11.cs7830;
 
-import edu.wright.hendrix11.cs7830.tools.StringParser;
-
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.text.ParseException;
-import java.util.*;
+import java.util.function.Function;
 
 /**
  * @author Joe Hendrix
@@ -16,5 +12,14 @@ public class Main {
         DowData data = new DowData("dow_jones_index.csv");
 
         System.out.println(data.getIndex());
+
+        Stock stock = new Stock("dfsdfs");
+
+        test(stock, StockData::getDayOfYear);
     }
+
+    private static void test(Stock stock, Function<StockData, Integer> getDayOfYear) {
+        getDayOfYear.apply(stock.getData().get(0));
+    }
+
 }
