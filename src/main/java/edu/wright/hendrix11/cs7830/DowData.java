@@ -6,10 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Joe on 10/21/2016.
@@ -63,10 +60,13 @@ public class DowData {
         stocks.values().forEach(Stock::sortData);
     }
 
+    public Collection<Stock> getStocks() {
+        return stocks.values();
+    }
+
     public double getIndex() {
         int sumYearOpens = 0;
         int sumYearCloses = 0;
-
 
         for(Stock stock : stocks.values()) {
             sumYearOpens += stock.getYearOpen();

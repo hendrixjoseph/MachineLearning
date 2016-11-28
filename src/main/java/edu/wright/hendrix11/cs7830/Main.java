@@ -15,6 +15,8 @@ public class Main {
     public static void main(String[] args) throws IOException, ParseException {
         DowData data = new DowData("dow_jones_index.csv");
 
-        System.out.println(data.getIndex());
+        System.out.println("index\t" + data.getIndex());
+
+        data.getStocks().forEach(stock -> {System.out.println(stock.getSymbol() + "\t" + stock.getPercentIncrease());});
     }
 }
