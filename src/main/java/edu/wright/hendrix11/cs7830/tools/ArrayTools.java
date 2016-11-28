@@ -1,11 +1,22 @@
 package edu.wright.hendrix11.cs7830.tools;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Joe on 11/7/2016.
  */
 public class ArrayTools {
+    public static List<Double> createList(int size, double values) {
+        List<Double> newList = new ArrayList<>();
+
+        for(int i = 0; i < size; i++) {
+            newList.add(values);
+        }
+
+        return newList;
+    }
+
     public static double[][] convertDouble2DListToArray(List<double[]> list) {
         double[][] array = new double[list.size()][];
 

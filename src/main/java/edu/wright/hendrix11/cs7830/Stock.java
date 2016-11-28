@@ -62,6 +62,10 @@ public class Stock {
         return getIncrease() / getYearOpen();
     }
 
+    public double getDayOfYearFor(int index) {
+        return data.get(index).getDayOfYear();
+    }
+
     @Override
     public boolean equals(Object o) {
         return this == o || (o instanceof Stock && equals((Stock)o));
