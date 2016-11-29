@@ -1,5 +1,7 @@
 package edu.wright.hendrix11.cs7830;
 
+import edu.wright.hendrix11.cs7830.machine.LinearStockMachine;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.function.Function;
@@ -11,21 +13,12 @@ public class Main {
     public static void main(String[] args) throws IOException, ParseException {
         DowData data = new DowData("dow_jones_index.csv");
 
-<<<<<<< HEAD
-        System.out.println("index\t" + data.getIndex());
+        Stock stock = data.getStocks().iterator().next();
 
-        data.getStocks().forEach(stock -> {System.out.println(stock.getSymbol() + "\t" + stock.getPercentIncrease());});
-=======
-        System.out.println(data.getIndex());
+        LinearStockMachine machine = new LinearStockMachine(stock, stock.getPercentIncrease(), StockData::getDayOfYear, StockData::getOpen);
 
-        Stock stock = new Stock("dfsdfs");
+        machine.learn(0.25);
 
-        test(stock, StockData::getDayOfYear);
->>>>>>> e59a30a6b26487dfadece4ce8a3a425bc29fb8ab
-    }
-
-    private static void test(Stock stock, Function<StockData, Integer> getDayOfYear) {
-        getDayOfYear.apply(stock.getData().get(0));
     }
 
 }
