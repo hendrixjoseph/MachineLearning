@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) throws IOException, ParseException {
         DowData data = new DowData("dow_jones_index.csv");
 
-        Stock stock = data.getStocks().iterator().next();
+        Stock stock = data.getStocks().get(0);
 
         LinearStockMachine machine = new LinearStockMachine(stock, stock.getPercentIncrease(), StockData::getDayOfYear, StockData::getOpen);
 

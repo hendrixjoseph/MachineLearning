@@ -60,8 +60,8 @@ public class DowData {
         stocks.values().forEach(Stock::sortData);
     }
 
-    public Collection<Stock> getStocks() {
-        return stocks.values();
+    public List<Stock> getStocks() {
+        return new ArrayList<>(stocks.values());
     }
 
     public double getIndex() {
