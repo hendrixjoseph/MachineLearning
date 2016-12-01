@@ -35,13 +35,7 @@ public class Controller {
         linearMachineText.setText("this is the text");
 
         data = new DowData("dow_jones_index.csv");
-
-        XYChart.Series index = new XYChart.Series();
-        index.setName("index");
-        index.getData().add(new XYChart.Data(data.getFirstDayOfYear(), data.getAverageYearOpen() / 100.0));
-        index.getData().add(new XYChart.Data(data.getLastDayOfYear(), data.getAverageYearClose() / 100.0));
-        stockChart.getData().add(index);
-
+        
         for (Stock stock : data.getStocks()) {
             stockChart.getData().add(getSeries(stock));
             pieChart.getData().add(getPieData(stock));
