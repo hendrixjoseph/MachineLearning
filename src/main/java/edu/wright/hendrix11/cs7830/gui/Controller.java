@@ -3,10 +3,14 @@ package edu.wright.hendrix11.cs7830.gui;
 import edu.wright.hendrix11.cs7830.DowData;
 import edu.wright.hendrix11.cs7830.Stock;
 import edu.wright.hendrix11.cs7830.StockData;
+import edu.wright.hendrix11.cs7830.machine.LinearStockMachine;
+import edu.wright.hendrix11.cs7830.machine.Machine;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -21,10 +25,15 @@ public class Controller {
     @FXML
     PieChart pieChart;
 
+    @FXML
+    Text linearMachineText;
+
     private DowData data;
 
     @FXML
     private void initialize() throws IOException, ParseException {
+        linearMachineText.setText("this is the text");
+
         data = new DowData("dow_jones_index.csv");
 
         XYChart.Series index = new XYChart.Series();
@@ -33,7 +42,7 @@ public class Controller {
         index.getData().add(new XYChart.Data(data.getLastDayOfYear(), data.getAverageYearClose() / 100.0));
         stockChart.getData().add(index);
 
-        for(Stock stock : data.getStocks()) {
+        for (Stock stock : data.getStocks()) {
             stockChart.getData().add(getSeries(stock));
             pieChart.getData().add(getPieData(stock));
         }
@@ -47,10 +56,16 @@ public class Controller {
         XYChart.Series series = new XYChart.Series();
         series.setName(stock.getSymbol());
 
-        for(StockData data : stock.getData()) {
+        for (StockData data : stock.getData()) {
             series.getData().add(new XYChart.Data(data.getDayOfYear(), data.getOpen() / 100.0));
         }
 
         return series;
+    }
+
+    public void clickButton(ActionEvent event) {
+        Stock stock = data.getStocks().get(0);
+
+        Machine machine = new LinearStockMachine(stock, stock.getYearClose(), StockData::getOpen, StockData::getVolume);
     }
 }

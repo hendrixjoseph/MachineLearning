@@ -10,7 +10,7 @@ public class OutputLayer extends Layer {
     }
 
     public void computeDeltaWeights(double target[]) {
-        for(int i = 0; i < neurons.length; i++) {
+        for (int i = 0; i < neurons.length; i++) {
             neurons[i].computeDeltaWeights(previousLayer, target[i]);
         }
     }

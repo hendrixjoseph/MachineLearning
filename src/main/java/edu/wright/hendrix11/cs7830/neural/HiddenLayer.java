@@ -15,8 +15,8 @@ public class HiddenLayer extends Layer {
     }
 
     public void computeDeltaWeights(double[] input) {
-        for(int i = 0; i < neurons.length; i++) {
-            if(previousLayer != null) {
+        for (int i = 0; i < neurons.length; i++) {
+            if (previousLayer != null) {
                 neurons[i].computeDeltaWeights(previousLayer, nextLayer);
             } else {
                 neurons[i].computeDeltaWeights(input, nextLayer);

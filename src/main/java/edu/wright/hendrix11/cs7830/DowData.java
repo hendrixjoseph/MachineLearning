@@ -6,7 +6,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Joe on 10/21/2016.
@@ -18,8 +21,8 @@ public class DowData {
 
         List<String> lines = Files.readAllLines(Paths.get(filename));
 
-        for(String line : lines) {
-            if(!line.startsWith("quarter")) {
+        for (String line : lines) {
+            if (!line.startsWith("quarter")) {
                 StockData data = new StockData();
                 String symbol;
 
@@ -48,7 +51,7 @@ public class DowData {
 
                 Stock stock = stocks.containsKey(symbol) ? stocks.get(symbol) : null;
 
-                if(stock == null) {
+                if (stock == null) {
                     stock = new Stock(symbol);
                     stocks.put(symbol, stock);
                 }
@@ -77,7 +80,7 @@ public class DowData {
     public int getAverageYearOpen() {
         int sumYearOpens = 0;
 
-        for(Stock stock : stocks.values()) {
+        for (Stock stock : stocks.values()) {
             sumYearOpens += stock.getYearOpen();
         }
 
@@ -87,7 +90,7 @@ public class DowData {
     public int getAverageYearClose() {
         int sumYearCloses = 0;
 
-        for(Stock stock : stocks.values()) {
+        for (Stock stock : stocks.values()) {
             sumYearCloses += stock.getYearClose();
         }
 
@@ -98,11 +101,11 @@ public class DowData {
         int sumYearOpens = 0;
         int sumYearCloses = 0;
 
-        for(Stock stock : stocks.values()) {
+        for (Stock stock : stocks.values()) {
             sumYearOpens += stock.getYearOpen();
             sumYearCloses += stock.getYearClose();
         }
 
-        return (sumYearCloses - sumYearOpens) / (double)sumYearOpens;
+        return (sumYearCloses - sumYearOpens) / (double) sumYearOpens;
     }
 }

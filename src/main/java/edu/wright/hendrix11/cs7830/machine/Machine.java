@@ -21,8 +21,8 @@ public abstract class Machine {
 
         thetas = new ArrayList<>();
 
-        for(int i = 0; i < inputs.length + 1; i++) {
-            if(thetas.isEmpty()) {
+        for (int i = 0; i < inputs.length + 1; i++) {
+            if (thetas.isEmpty()) {
                 thetas.add(1.1);
             } else {
                 thetas.add(thetas.get(i - 1) - 0.2);
@@ -87,8 +87,8 @@ public abstract class Machine {
     }
 
     protected boolean isDeltaSmall(List<Double> deltaThetas) {
-        for(double deltaTheta : deltaThetas) {
-            if(Math.abs(deltaTheta) > 0.0001) {
+        for (double deltaTheta : deltaThetas) {
+            if (Math.abs(deltaTheta) > 0.0001) {
                 return false;
             }
         }

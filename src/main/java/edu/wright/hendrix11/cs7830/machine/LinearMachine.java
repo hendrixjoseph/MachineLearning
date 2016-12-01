@@ -14,7 +14,7 @@ public class LinearMachine extends Machine {
     protected double hypothesis(List<Double> data, List<Double> thetas) {
         double result = thetas.get(thetas.size() - 1);
 
-        for(int i = 0; i < data.size(); i++) {
+        for (int i = 0; i < data.size(); i++) {
             result += thetas.get(i) * data.get(i);
         }
 

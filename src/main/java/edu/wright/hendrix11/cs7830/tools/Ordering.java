@@ -2,7 +2,6 @@ package edu.wright.hendrix11.cs7830.tools;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -12,7 +11,7 @@ public class Ordering {
     private List<Order> order = new ArrayList<>();
 
     public Ordering(int count) {
-        for(int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++) {
             order.add(new Order(i));
         }
     }

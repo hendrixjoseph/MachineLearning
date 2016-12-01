@@ -10,7 +10,7 @@ public class ArrayTools {
     public static List<Double> createList(int size, double values) {
         List<Double> newList = new ArrayList<>();
 
-        for(int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             newList.add(values);
         }
 
@@ -20,7 +20,7 @@ public class ArrayTools {
     public static double[][] convertDouble2DListToArray(List<double[]> list) {
         double[][] array = new double[list.size()][];
 
-        for(int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             array[i] = list.get(i);
         }
 
@@ -30,7 +30,7 @@ public class ArrayTools {
     public static double[] convertDoubleListToArray(List<Double> list) {
         double[] array = new double[list.size()];
 
-        for(int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             array[i] = list.get(i);
         }
 
@@ -40,8 +40,8 @@ public class ArrayTools {
     public static int findMaxIndex(double[] array) {
         int index = 0;
 
-        for(int i = 1; i < array.length; i++) {
-            if(array[i] > array[index]) {
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > array[index]) {
                 index = i;
             }
         }
@@ -52,7 +52,7 @@ public class ArrayTools {
     public static double[][] normalize(double[][] array) {
         double[][] normalized = new double[array.length][];
 
-        for(int i = 0; i < normalized.length; i++) {
+        for (int i = 0; i < normalized.length; i++) {
             normalized[i] = normalize(array[i]);
         }
 
@@ -64,7 +64,7 @@ public class ArrayTools {
         double max = array[0];
         double sum = 0.0;
 
-        for(double d : array) {
+        for (double d : array) {
             min = Math.min(d, min);
             max = Math.max(d, max);
             sum += d;
@@ -75,7 +75,7 @@ public class ArrayTools {
 
         double[] normalized = new double[array.length];
 
-        for(int i = 0; i < normalized.length; i++) {
+        for (int i = 0; i < normalized.length; i++) {
             normalized[i] = (array[i] - average) / range;
         }
 

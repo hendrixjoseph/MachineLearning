@@ -11,10 +11,14 @@ import java.util.function.Function;
  * @author Joe Hendrix
  */
 public class LinearStockMachine extends LinearMachine {
+    public LinearStockMachine(Stock stock, double output, Function<StockData, ? extends Number>... inData) {
+        super(output, processInputs(stock, inData));
+    }
+
     private static List<Double>[] processInputs(Stock stock, Function<StockData, ? extends Number>[] inData) {
         List<Double>[] inputs = new List[inData.length];
 
-        for(int i = 0; i < inputs.length; i++) {
+        for (int i = 0; i < inputs.length; i++) {
             inputs[i] = new ArrayList<>();
 
             for (StockData sd : stock.getData()) {
@@ -23,9 +27,5 @@ public class LinearStockMachine extends LinearMachine {
         }
 
         return inputs;
-    }
-
-    public LinearStockMachine(Stock stock, double output, Function<StockData, ? extends Number>... inData) {
-        super(output, processInputs(stock, inData));
     }
 }

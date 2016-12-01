@@ -9,15 +9,14 @@ import java.util.Date;
  * Created by Joe on 10/25/2016.
  */
 public class StringParser {
+    private static DateFormat readDateFormat = new SimpleDateFormat("M/d/yyyy");
+    private static DateFormat dayOfYearDateFormat = new SimpleDateFormat("D");
     private StringParser() {
 
     }
 
-    private static DateFormat readDateFormat = new SimpleDateFormat("M/d/yyyy");
-    private static DateFormat dayOfYearDateFormat = new SimpleDateFormat("D");
-
     public static int parseDollars(String string) {
-        return Integer.parseInt(string.replace("$","").replace(".",""));
+        return Integer.parseInt(string.replace("$", "").replace(".", ""));
     }
 
     public static int getDayOfYear(String string) throws ParseException {

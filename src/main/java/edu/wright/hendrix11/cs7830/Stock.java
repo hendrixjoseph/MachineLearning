@@ -47,7 +47,7 @@ public class Stock {
     public int getYearClose() {
         assert sorted : "Please sort first.";
 
-        return data.get(data.size() -1 ).getClose();
+        return data.get(data.size() - 1).getClose();
     }
 
     public double getIncrease() {
@@ -72,7 +72,7 @@ public class Stock {
 
     @Override
     public boolean equals(Object o) {
-        return this == o || (o instanceof Stock && equals((Stock)o));
+        return this == o || (o instanceof Stock && equals((Stock) o));
     }
 
     public boolean equals(Stock stock) {

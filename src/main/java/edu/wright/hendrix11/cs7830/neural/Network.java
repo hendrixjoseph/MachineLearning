@@ -25,15 +25,15 @@ public class Network {
     public Network(int... layerSize) {
         layers = new Layer[layerSize.length - 1];
 
-        for(int i = 0; i < layers.length; i++) {
-            if(i == layers.length - 1) {
+        for (int i = 0; i < layers.length; i++) {
+            if (i == layers.length - 1) {
                 layers[i] = new OutputLayer(layerSize[i + 1], layerSize[i]);
             } else {
                 layers[i] = new HiddenLayer(layerSize[i + 1], layerSize[i]);
             }
 
-            if(i > 0) {
-                layers[i].setPreviousLayer((HiddenLayer)layers[i - 1]);
+            if (i > 0) {
+                layers[i].setPreviousLayer((HiddenLayer) layers[i - 1]);
             }
         }
     }
@@ -58,7 +58,7 @@ public class Network {
     public double[] getOutputs(double[] inputs) {
         double[] prevOutputs = inputs;
 
-        for(Layer layer : layers) {
+        for (Layer layer : layers) {
             prevOutputs = layer.getOutputs(prevOutputs);
         }
 
@@ -70,25 +70,25 @@ public class Network {
     }
 
     public void learn(double learningRate, double testPercent) {
-        if(inputs.length != targets.length) {
+        if (inputs.length != targets.length) {
             throw new IllegalArgumentException("inputs.length (" + inputs.length + ") != targets.length (" + targets.length + ")");
         }
 
         order = new Ordering(inputs.length);
         order.shuffle();
 
-        for(int generation = 0; generation < 100_000; generation++) {
+        for (int generation = 0; generation < 100_000; generation++) {
             error.add(getError());
 
-            if(error.size() > 1) {
+            if (error.size() > 1) {
                 int size = error.size();
 
-                if(Math.abs(error.get(size - 1) - error.get(size - 2)) < 0.000000001) {
+                if (Math.abs(error.get(size - 1) - error.get(size - 2)) < 0.000000001) {
                     break;
                 }
             }
 
-            for(int x = 0; x < order.size() * testPercent; x++) {
+            for (int x = 0; x < order.size() * testPercent; x++) {
                 int i = order.getIndex(x);
 
                 // forward propogation
@@ -102,7 +102,6 @@ public class Network {
             }
         }
     }
-
 
 
     private void backPropogation(double[] input, double[] target) {
@@ -120,10 +119,10 @@ public class Network {
     public double getError() {
         double error = 0.0;
 
-        for(int i = 0; i < inputs.length; i++) {
+        for (int i = 0; i < inputs.length; i++) {
             double[] outputs = getOutputs(inputs[i]);
 
-            for(int j = 0; j < outputs.length; j++) {
+            for (int j = 0; j < outputs.length; j++) {
                 error += (targets[i][j] - outputs[j]) * (targets[i][j] - outputs[j]) / 2;
             }
         }
@@ -131,11 +130,11 @@ public class Network {
         return error / inputs.length;
     }
 
-    public Map<Integer,Map<Integer, Integer>> getConfusionMatrix(double testPercent) {
+    public Map<Integer, Map<Integer, Integer>> getConfusionMatrix(double testPercent) {
 
-        Map<Integer,Map<Integer, Integer>> matrix = new HashMap<>();
+        Map<Integer, Map<Integer, Integer>> matrix = new HashMap<>();
 
-        for(int x = (int) (order.size() * testPercent); x < order.size(); x++) {
+        for (int x = (int) (order.size() * testPercent); x < order.size(); x++) {
             int i = order.getIndex(x);
 
             double[] outputs = getOutputs(inputs[i]);
@@ -144,25 +143,25 @@ public class Network {
             int target = ArrayTools.findMaxIndex(targets[i]) + 1;
 
 
-            if(matrix.get(value) == null) {
+            if (matrix.get(value) == null) {
                 matrix.put(value, new HashMap<>());
             }
 
-            if(matrix.get(value).get(target) == null) {
+            if (matrix.get(value).get(target) == null) {
                 matrix.get(value).put(target, 0);
             }
 
-            matrix.get(value).put(target,matrix.get(value).get(target) + 1);
+            matrix.get(value).put(target, matrix.get(value).get(target) + 1);
         }
 
         return matrix;
     }
 
-    public Map<Integer,Map<Integer, Integer>> getConfusionMatrix2(double testPercent) {
+    public Map<Integer, Map<Integer, Integer>> getConfusionMatrix2(double testPercent) {
 
-        Map<Integer,Map<Integer, Integer>> matrix = new HashMap<>();
+        Map<Integer, Map<Integer, Integer>> matrix = new HashMap<>();
 
-        for(int x = (int) (order.size() * testPercent); x < order.size(); x++) {
+        for (int x = (int) (order.size() * testPercent); x < order.size(); x++) {
             int i = order.getIndex(x);
 
             double[] outputs = getOutputs(inputs[i]);
@@ -170,15 +169,15 @@ public class Network {
             int value = (int) Math.round(outputs[0]);
             int target = (int) Math.round(targets[i][0]);
 
-            if(matrix.get(value) == null) {
+            if (matrix.get(value) == null) {
                 matrix.put(value, new HashMap<>());
             }
 
-            if(matrix.get(value).get(target) == null) {
+            if (matrix.get(value).get(target) == null) {
                 matrix.get(value).put(target, 0);
             }
 
-            matrix.get(value).put(target,matrix.get(value).get(target) + 1);
+            matrix.get(value).put(target, matrix.get(value).get(target) + 1);
         }
 
         return matrix;

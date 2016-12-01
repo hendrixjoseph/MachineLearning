@@ -10,7 +10,7 @@ public abstract class Layer {
     public Layer(int size, int neuronInputSize) {
         neurons = new Neuron[size];
 
-        for(int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             neurons[i] = new Neuron(neuronInputSize, i);
         }
     }
@@ -22,7 +22,7 @@ public abstract class Layer {
     public double[] getOutputs(double[] inputs) {
         double[] outputs = new double[neurons.length];
 
-        for(int i = 0; i < outputs.length; i++) {
+        for (int i = 0; i < outputs.length; i++) {
             outputs[i] = neurons[i].getOutput(inputs);
         }
 
@@ -37,7 +37,7 @@ public abstract class Layer {
     public abstract void computeDeltaWeights(double[] value);
 
     public void applyDeltaWeights(double learningRate) {
-        for(Neuron neuron : neurons) {
+        for (Neuron neuron : neurons) {
             neuron.applyDeltaWeights(learningRate);
         }
     }

@@ -4,7 +4,6 @@ import edu.wright.hendrix11.cs7830.machine.LinearStockMachine;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.function.Function;
 
 /**
  * @author Joe Hendrix

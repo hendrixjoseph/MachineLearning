@@ -19,7 +19,7 @@ public class Neuron {
     public Neuron(final int numWeights, final int position) {
         this.position = position;
 
-      bias = 1.0;//(2.0 * Math.random() - 1.0) * 1.0;
+        bias = 1.0;//(2.0 * Math.random() - 1.0) * 1.0;
 
         weights = new double[numWeights];
 
@@ -40,7 +40,7 @@ public class Neuron {
 
         deltaBias = errorOut * deltaOutDeltaNet;
 
-        for(int i = 0; i < weights.length; i++) {
+        for (int i = 0; i < weights.length; i++) {
             deltaWeights[i] = errorOut * deltaOutDeltaNet * previousLayer.getNeurons()[i].getOutput();
         }
     }
@@ -48,7 +48,7 @@ public class Neuron {
     public void applyDeltaWeights(double learningRate) {
         bias = bias - learningRate * deltaBias;
 
-        for(int i = 0; i < weights.length; i++) {
+        for (int i = 0; i < weights.length; i++) {
             weights[i] = weights[i] - learningRate * (deltaWeights[i] + 0.0 * weights[i] / weights.length);
         }
     }
@@ -56,7 +56,7 @@ public class Neuron {
     public void computeDeltaWeights(final Layer previousLayer, final Layer nextLayer) {
         double[] input = new double[previousLayer.getNeurons().length];
 
-        for(int i = 0; i < input.length; i++) {
+        for (int i = 0; i < input.length; i++) {
             input[i] = previousLayer.getNeurons()[i].getOutput();
         }
 
@@ -68,7 +68,7 @@ public class Neuron {
 
         errorOut = 0.0;
 
-        for(int i = 0; i < nextLayer.getNeurons().length; i++) {
+        for (int i = 0; i < nextLayer.getNeurons().length; i++) {
             Neuron nextNeuron = nextLayer.getNeurons()[i];
 
             double eNextNetNext = nextNeuron.errorOut * nextNeuron.deltaOutDeltaNet;
@@ -81,7 +81,7 @@ public class Neuron {
 
         deltaBias = errorOut * deltaOutDeltaNet;
 
-        for(int i = 0; i < weights.length; i++) {
+        for (int i = 0; i < weights.length; i++) {
             deltaWeights[i] = errorOut * deltaOutDeltaNet * input[i];
         }
     }
@@ -95,14 +95,14 @@ public class Neuron {
     }
 
     public double getOutput(final double inputs[]) {
-        if(inputs.length != weights.length) {
+        if (inputs.length != weights.length) {
             throw new IllegalArgumentException("Input array length (" + inputs.length +
-                    ") needs to equal weight array length (" + weights.length +")!");
+                    ") needs to equal weight array length (" + weights.length + ")!");
         }
 
         output = bias;
 
-        for(int i = 0; i < inputs.length; i++) {
+        for (int i = 0; i < inputs.length; i++) {
             output += weights[i] * inputs[i];
         }
 
