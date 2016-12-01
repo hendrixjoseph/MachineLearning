@@ -64,6 +64,36 @@ public class DowData {
         return new ArrayList<>(stocks.values());
     }
 
+    public int getFirstDayOfYear() {
+        return getStocks().get(0).getDayOfYearFor(0);
+    }
+
+    public int getLastDayOfYear() {
+        Stock example = getStocks().get(0);
+
+        return example.getDayOfYearFor(example.numDataPoints() - 1);
+    }
+
+    public int getAverageYearOpen() {
+        int sumYearOpens = 0;
+
+        for(Stock stock : stocks.values()) {
+            sumYearOpens += stock.getYearOpen();
+        }
+
+        return sumYearOpens / stocks.size();
+    }
+
+    public int getAverageYearClose() {
+        int sumYearCloses = 0;
+
+        for(Stock stock : stocks.values()) {
+            sumYearCloses += stock.getYearClose();
+        }
+
+        return sumYearCloses / stocks.size();
+    }
+
     public double getIndex() {
         int sumYearOpens = 0;
         int sumYearCloses = 0;

@@ -62,8 +62,12 @@ public class Stock {
         return getIncrease() / getYearOpen();
     }
 
-    public double getDayOfYearFor(int index) {
+    public int getDayOfYearFor(int index) {
         return data.get(index).getDayOfYear();
+    }
+
+    public int numDataPoints() {
+        return data.size();
     }
 
     @Override
