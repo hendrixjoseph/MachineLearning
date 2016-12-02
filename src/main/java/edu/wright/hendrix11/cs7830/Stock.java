@@ -77,7 +77,7 @@ public class Stock {
     public int invest(int amount, int week) {
         int costPerShare = data.get(week).getOpen();
         
-        return getYearClose() * amount / costPerShare 
+        return getYearClose() * amount / costPerShare;
     }
 
     @Override

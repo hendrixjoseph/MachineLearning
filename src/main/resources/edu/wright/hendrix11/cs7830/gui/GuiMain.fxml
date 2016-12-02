@@ -19,7 +19,7 @@
 
         </Tab>
         <fx:include fx:id="stockTableTab" source="charts/StockTable.fxml" />
-        <fx:include fx:id="investTab" source="charts/InvestTab.fxml" />
+        <fx:include fx:id="investTab" source="InvestTab.fxml" />
         <fx:include fx:id="lineChartTab" source="charts/LineChart.fxml" />
         <fx:include fx:id="pieTab" source="charts/PieChart.fxml"/>
     </TabPane>

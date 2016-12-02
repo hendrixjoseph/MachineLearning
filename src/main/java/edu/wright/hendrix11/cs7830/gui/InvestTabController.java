@@ -15,7 +15,7 @@ import javafx.scene.control.Label;
 public class InvestTabController {
   private Stock stock;
   
-  public setStock(Stock stock) {
+  public void setStock(Stock stock) {
     this.stock = stock;
   }
 }
