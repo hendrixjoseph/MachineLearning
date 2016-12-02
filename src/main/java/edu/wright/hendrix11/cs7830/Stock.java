@@ -69,6 +69,16 @@ public class Stock {
     public int numDataPoints() {
         return data.size();
     }
+    
+    public int invest(int amount) {
+        return invest(amount, 0);
+    }
+    
+    public int invest(int amount, int week) {
+        int costPerShare = data.get(week).getOpen();
+        
+        return getYearClose() * amount / costPerShare 
+    }
 
     @Override
     public boolean equals(Object o) {
