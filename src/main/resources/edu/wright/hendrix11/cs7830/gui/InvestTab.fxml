@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TextField?>
+
+<Tab xmlns="http://javafx.com/javafx/8.0.112" 
+     xmlns:fx="http://javafx.com/fxml/1" 
+     fx:controller="edu.wright.hendrix11.cs7830.gui.InvestTabController"
+     closable="false" text="Invest">
+     <TextField />
+ </Tab>
