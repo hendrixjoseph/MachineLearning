@@ -14,25 +14,7 @@
         </Menu>
     </MenuBar>
     <TabPane>
-        <Tab closable="false" text="Linear Machine">
-            <VBox alignment="BOTTOM_LEFT">
-                <LineChart fx:id="linearCostChart" title="Cost">
-                    <xAxis>
-                        <NumberAxis/>
-                    </xAxis>
-                    <yAxis>
-                        <NumberAxis/>
-                    </yAxis>
-                </LineChart>
-                <HBox>
-                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#clickButton" text="Button"/>
-                    <Text fx:id="linearMachineText">
-                        Hello!
-                    </Text>
-                </HBox>
-
-            </VBox>
-        </Tab>
+        <fx:include fx:id="machineTab" source="MachineTab.fxml" />
         <Tab closable="false" text="Neural Network">
 
         </Tab>

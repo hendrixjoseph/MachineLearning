@@ -14,16 +14,16 @@ import java.util.List;
  */
 public class StockTable {
     @FXML
-    TableView stockTable;
+    private TableView stockTable;
 
     @FXML
-    TableColumn<Stock, String> symbolColumn;
+    private TableColumn<Stock, String> symbolColumn;
     @FXML
-    TableColumn<Stock, Number> openColumn;
+    private TableColumn<Stock, Number> openColumn;
     @FXML
-    TableColumn<Stock, Number> closeColumn;
+    private TableColumn<Stock, Number> closeColumn;
     @FXML
-    TableColumn<Stock, Number> increaseColumn;
+    private TableColumn<Stock, Number> increaseColumn;
 
     @FXML
     private void initialize() {

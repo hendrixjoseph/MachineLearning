@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<Tab xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wright.hendrix11.cs7830.gui.MachineController"
+     closable="false" text="Linear Machine">
+    <VBox alignment="BOTTOM_LEFT">
+        <LineChart fx:id="linearCostChart" title="Cost">
+            <xAxis>
+                <NumberAxis/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis/>
+            </yAxis>
+        </LineChart>
+        <HBox>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#clickButton" text="Button"/>
+            <Label fx:id="linearMachineText">
+                Hello!
+            </Label>
+        </HBox>
+
+    </VBox>
+</Tab>

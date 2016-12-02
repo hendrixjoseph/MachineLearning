@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class LineChartGui {
     @FXML
-    LineChart stockChart;
+    private LineChart stockChart;
 
     public void setStocks(List<Stock> stocks) {
         for (Stock stock : stocks) {

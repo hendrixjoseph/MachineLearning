@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class PieGui {
     @FXML
-    PieChart pieChart;
+    private PieChart pieChart;
 
     public void setStocks(List<Stock> stocks) {
         for (Stock stock : stocks) {

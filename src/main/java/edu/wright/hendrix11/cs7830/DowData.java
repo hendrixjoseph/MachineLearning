@@ -12,9 +12,10 @@ import java.util.*;
  * Created by Joe on 10/21/2016.
  */
 public class DowData {
-    private Map<String, Stock> stocks = new HashMap<>();
+    private List<Stock> stocks = new ArrayList<>();
 
     public DowData(String filename) throws IOException, ParseException {
+        Map<String, Stock> stocks = new HashMap<>();
 
         List<String> lines = Files.readAllLines(Paths.get(filename));
 
@@ -58,10 +59,12 @@ public class DowData {
         }
 
         stocks.values().forEach(Stock::sortData);
+
+        this.stocks.addAll(stocks.values());
     }
 
     public List<Stock> getStocks() {
-        return new ArrayList<>(stocks.values());
+        return stocks;
     }
 
     public int getFirstDayOfYear() {
@@ -77,7 +80,7 @@ public class DowData {
     public int getAverageYearOpen() {
         int sumYearOpens = 0;
 
-        for (Stock stock : stocks.values()) {
+        for (Stock stock : stocks) {
             sumYearOpens += stock.getYearOpen();
         }
 
@@ -87,7 +90,7 @@ public class DowData {
     public int getAverageYearClose() {
         int sumYearCloses = 0;
 
-        for (Stock stock : stocks.values()) {
+        for (Stock stock : stocks) {
             sumYearCloses += stock.getYearClose();
         }
 
@@ -98,7 +101,7 @@ public class DowData {
         int sumYearOpens = 0;
         int sumYearCloses = 0;
 
-        for (Stock stock : stocks.values()) {
+        for (Stock stock : stocks) {
             sumYearOpens += stock.getYearOpen();
             sumYearCloses += stock.getYearClose();
         }
@@ -107,10 +110,10 @@ public class DowData {
     }
 
     public Stock getBestStock() {
-        return stocks.values().stream().max(Comparator.comparingDouble(Stock::getPercentIncrease)).get();
+        return stocks.stream().max(Comparator.comparingDouble(Stock::getPercentIncrease)).get();
     }
 
     public Stock getWorstStock() {
-        return stocks.values().stream().min(Comparator.comparingDouble(Stock::getPercentIncrease)).get();
+        return stocks.stream().min(Comparator.comparingDouble(Stock::getPercentIncrease)).get();
     }
 }
