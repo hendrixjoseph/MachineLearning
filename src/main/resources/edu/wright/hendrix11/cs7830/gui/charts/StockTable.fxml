@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<Tab xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
+     fx:controller="edu.wright.hendrix11.cs7830.gui.charts.StockTable" closable="false" text="Stock Data">
+    <TableView fx:id="stockTable">
+        <columns>
+            <TableColumn text="Symbol" fx:id="symbolColumn"></TableColumn>
+            <TableColumn text="Year Open" fx:id="openColumn"></TableColumn>
+            <TableColumn text="Year Close" fx:id="closeColumn"></TableColumn>
+            <TableColumn text="Percent Increase" fx:id="increaseColumn"></TableColumn>
+        </columns>
+    </TableView>
+</Tab>

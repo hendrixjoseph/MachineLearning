@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<Tab xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
+     fx:controller="edu.wright.hendrix11.cs7830.gui.charts.LineChartGui" closable="false" text="Line Chart">
+    <LineChart fx:id="stockChart" title="Stock Prices">
+        <xAxis>
+            <NumberAxis/>
+        </xAxis>
+        <yAxis>
+            <NumberAxis/>
+        </yAxis>
+    </LineChart>
+</Tab>

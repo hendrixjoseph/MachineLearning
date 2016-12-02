@@ -6,10 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Joe on 10/21/2016.
@@ -107,5 +104,13 @@ public class DowData {
         }
 
         return (sumYearCloses - sumYearOpens) / (double) sumYearOpens;
+    }
+
+    public Stock getBestStock() {
+        return stocks.values().stream().max(Comparator.comparingDouble(Stock::getPercentIncrease)).get();
+    }
+
+    public Stock getWorstStock() {
+        return stocks.values().stream().min(Comparator.comparingDouble(Stock::getPercentIncrease)).get();
     }
 }

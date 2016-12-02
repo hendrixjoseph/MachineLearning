@@ -20,6 +20,7 @@ public class GuiMain extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("GuiMain.fxml"));
+
         Scene scene = new Scene(root, 500, 500);
         stage.setTitle("CS7830 Machine Learning Final Project");
         stage.setScene(scene);
