@@ -15,6 +15,9 @@ import java.util.List;
  * Created by Joe on 11/29/2016.
  */
 public class Controller {
+    
+    @FXML
+    private InvestTabController investTabController;
 
 
     @FXML
