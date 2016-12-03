@@ -47,5 +47,6 @@ public class Controller {
         pieTabController.setStocks(stocks);
         lineChartTabController.setStocks(stocks);
         stockTableTabController.setStocks(stocks);
+        investTabController.setStocks(stocks);
     }
 }

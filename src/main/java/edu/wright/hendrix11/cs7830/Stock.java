@@ -70,14 +70,14 @@ public class Stock {
         return data.size();
     }
     
-    public int invest(int amount) {
+    public int invest(double amount) {
         return invest(amount, 0);
     }
     
-    public int invest(int amount, int week) {
+    public int invest(double amount, int week) {
         int costPerShare = data.get(week).getOpen();
         
-        return getYearClose() * amount / costPerShare;
+        return (int) (getYearClose() * amount / costPerShare);
     }
 
     @Override
@@ -92,5 +92,10 @@ public class Stock {
     @Override
     public int hashCode() {
         return symbol.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return symbol;
     }
 }
