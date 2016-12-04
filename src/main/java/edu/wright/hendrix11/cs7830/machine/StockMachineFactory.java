@@ -17,7 +17,7 @@ public class StockMachineFactory {
     }
 
     public static LinearMachine getLinearStockMachine(List<Stock> stocks, Function<StockData, ? extends Number>... inData) {
-        List<Double>[] inputs = (List<Double>[]) processInputs(stocks, inData).toArray();
+        List<Double>[] inputs = processInputs(stocks, inData).toArray(new List[0]);
 
         List<Double> outputs = processOutputs(stocks, inputs.length);
 
