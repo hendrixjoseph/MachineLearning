@@ -7,8 +7,8 @@ import java.util.List;
  */
 public class LinearMachine extends Machine {
 
-    public LinearMachine(double output, List<Double>[] inputs) {
-        super(output, inputs);
+    public LinearMachine(List<Double> outputs, List<Double>[] inputs) {
+        super(outputs, inputs);
     }
 
     protected double hypothesis(List<Double> data, List<Double> thetas) {

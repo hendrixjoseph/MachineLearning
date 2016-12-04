@@ -13,10 +13,10 @@ public abstract class Machine {
     private List<Double> thetas;
 
     private List<Double>[] inputs;
-    private double output;
+    private List<Double> outputs;
 
-    public Machine(double output, List<Double>[] inputs) {
-        this.output = output;
+    public Machine(List<Double> outputs, List<Double>[] inputs) {
+        this.outputs = outputs;
         this.inputs = inputs;
 
         thetas = new ArrayList<>();
@@ -43,7 +43,7 @@ public abstract class Machine {
             for (int i = 0; i < inputs.length; i++) {
                 List<Double> data = new ArrayList<>();
 
-                double desired = output;
+                double desired = outputs.get(i);
                 double cost = cost(data, desired);
                 costSum += cost;
 
