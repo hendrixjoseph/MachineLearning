@@ -1,6 +1,7 @@
 package edu.wright.hendrix11.cs7830.machine;
 
 import edu.wright.hendrix11.cs7830.DowData;
+import edu.wright.hendrix11.cs7830.Stock;
 import edu.wright.hendrix11.cs7830.StockData;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -24,7 +25,11 @@ public class StockMachineFactoryTest {
 
     @Test
     public void testGetLinearStockMachine() throws Exception {
-        Machine machine = StockMachineFactory.getLinearStockMachine(data.getStocks(), StockData::getClose);
+        Machine machine = StockMachineFactory.getLinearStockMachine(data.getStocks(), StockData::getDayOfYear, StockData::getClose);
+
+        machine.learn(0.25);
+
+
     }
 
 }

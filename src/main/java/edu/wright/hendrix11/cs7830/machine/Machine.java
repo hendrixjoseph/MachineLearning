@@ -86,7 +86,7 @@ public abstract class Machine {
         return hypothesis(data, thetas);
     }
 
-    protected boolean isDeltaSmall(List<Double> deltaThetas) {
+    private boolean isDeltaSmall(List<Double> deltaThetas) {
         for (double deltaTheta : deltaThetas) {
             if (Math.abs(deltaTheta) > 0.0001) {
                 return false;
