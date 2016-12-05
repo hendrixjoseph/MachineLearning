@@ -11,6 +11,10 @@ public class LinearMachine extends Machine {
         super(outputs, inputs);
     }
 
+    public LinearMachine(List<Double> outputs, List<Double> inputs) {
+        this(outputs, new List[]{inputs});
+    }
+
     protected double hypothesis(List<Double> data, List<Double> thetas) {
         double result = thetas.get(thetas.size() - 1);
 

@@ -25,6 +25,9 @@ import java.util.stream.Stream;
 public class InvestTabController {
     @FXML
     public TextField amountField;
+
+    @FXML
+    public TextField weekField;
     @FXML
     private Label outputLabel;
     @FXML
@@ -50,8 +53,8 @@ public class InvestTabController {
 
     public void invest() {
         try {
-            String amountString = amountField.getText();
-            int amount = Integer.parseInt(amountString) * 100;
+            int amount = Integer.parseInt(amountField.getText()) * 100;
+            int week = Integer.parseInt(weekField.getText()) - 1;
 
             Supplier<Stream<Map.Entry<Stock, BooleanProperty>>> entryStream = () -> stockMap.entrySet().stream().filter(entry -> entry.getValue().get());
 
@@ -61,7 +64,7 @@ public class InvestTabController {
                 double perEach = amount / count;
                 final int[] total = {0};
 
-                entryStream.get().forEach(entry -> total[0] += entry.getKey().invest(perEach));
+                entryStream.get().forEach(entry -> total[0] += entry.getKey().invest(perEach, week));
 
                 outputLabel.setText("You ended up with $" + (total[0]) / 100.00);
             } else {

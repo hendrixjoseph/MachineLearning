@@ -8,13 +8,12 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.text.ParseException;
-
-import static org.junit.Assert.*;
+import java.util.Map;
 
 /**
  * @author Joe Hendrix
  */
-public class StockMachineFactoryTest {
+public class StockMachineTest {
 
     private static DowData data;
 
@@ -24,12 +23,16 @@ public class StockMachineFactoryTest {
     }
 
     @Test
-    public void testGetLinearStockMachine() throws Exception {
-        Machine machine = StockMachineFactory.getLinearStockMachine(data.getStocks(), StockData::getDayOfYear, StockData::getClose);
+    public void testStockMachine() throws Exception {
+        StockMachine machine = new StockMachine(data.getStocks(), 4);
 
-        machine.learn(0.25);
+        machine.runMachines(0.01);
 
+        Map<Stock, Integer> results = machine.getResults();
 
+        for(Map.Entry<Stock, Integer> result : results.entrySet()) {
+            System.out.println(result.getKey() + "\t" + result.getValue() / 100.0);
+        }
     }
 
 }

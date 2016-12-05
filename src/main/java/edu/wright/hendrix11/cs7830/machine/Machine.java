@@ -4,6 +4,7 @@ import edu.wright.hendrix11.cs7830.tools.ArrayTools;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -14,6 +15,8 @@ public abstract class Machine {
 
     private List<Double>[] inputs;
     private List<Double> outputs;
+
+    private int generation;
 
     public Machine(List<Double> outputs, List<Double>[] inputs) {
         this.outputs = outputs;
@@ -30,18 +33,28 @@ public abstract class Machine {
         }
     }
 
+    public int getGeneration() {
+        return generation;
+    }
+
     public void learn(double learningRate) {
         if (learningRate <= 0 || learningRate > 1) {
             throw new InvalidParameterException("Learning rate must be from 0 exclusive to 1 inclusive!");
         }
 
-        for (int generation = 0; generation < 1_000_000; generation++) {
+        for (generation = 0; generation < 100; generation++) {
             List<Double> deltaThetas = ArrayTools.createList(thetas.size(), 0.0);
 
             double costSum = 0;
 
             for (int i = 0; i < inputs.length; i++) {
                 List<Double> data = new ArrayList<>();
+
+                for(int j = 0; j < inputs.length; j++) {
+                    List<Double> input = inputs[j];
+
+                    data.add(input.get(i));
+                }
 
                 double desired = outputs.get(i);
                 double cost = cost(data, desired);
@@ -68,13 +81,13 @@ public abstract class Machine {
                 assert Double.isFinite(theta) : "theta: " + theta + " deltaTheta: " + deltaThetas.get(j);
             }
 
-            if (costSum < 0.0001 || isDeltaSmall(deltaThetas)) {
-                break;
-            }
+//            if (costSum < 0.0001 || isDeltaSmall(deltaThetas)) {
+//                break;
+//            }
         }
     }
 
-    protected double cost(List<Double> data, double desired) {
+    private double cost(List<Double> data, double desired) {
         double cost = hypothesis(data) - desired;
         assert Double.isFinite(cost) : "Data: " + data + " Desired: " + desired;
         return cost;
@@ -84,6 +97,10 @@ public abstract class Machine {
 
     public double hypothesis(List<Double> data) {
         return hypothesis(data, thetas);
+    }
+
+    public double hypothesis(Double data) {
+        return hypothesis(Arrays.asList(new Double[]{data}));
     }
 
     private boolean isDeltaSmall(List<Double> deltaThetas) {
