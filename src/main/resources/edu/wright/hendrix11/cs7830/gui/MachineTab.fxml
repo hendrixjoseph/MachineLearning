@@ -22,9 +22,11 @@
         <TableView fx:id="resultsTable">
             <columns>
                 <TableColumn text="Symbol" fx:id="symbolColumn"></TableColumn>
-                <TableColumn text="Year Open" fx:id="openColumn"></TableColumn>
-                <TableColumn text="Year Close (Guess)" fx:id="guessColumn"></TableColumn>
-                <TableColumn text="Year Close (Actual)" fx:id="closeColumn"></TableColumn>
+                <TableColumn text="Year Open" />
+                <TableColumn text="Year Close (Guess)" />
+                <TableColumn text="Year Close (Actual)" />
+                <TableColumn text="Return (Guess)" />
+                <TableColumn text="Return (Actual)" />
             </columns>
         </TableView>
         <Label fx:id="linearMachineText">

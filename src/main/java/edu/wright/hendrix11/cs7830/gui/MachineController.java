@@ -7,6 +7,7 @@ import edu.wright.hendrix11.cs7830.machine.StockMachine;
 import edu.wright.hendrix11.cs7830.machine.Machine;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -33,21 +34,25 @@ public class MachineController {
 
     @FXML
     private TableColumn<Map.Entry<Stock, Integer>, String> symbolColumn;
-    @FXML
-    private TableColumn<Map.Entry<Stock, Integer>, Number> openColumn;
-    @FXML
-    private TableColumn<Map.Entry<Stock, Integer>, Number> closeColumn;
-    @FXML
-    private TableColumn<Map.Entry<Stock, Integer>, Number> guessColumn;
 
     private DowData data;
 
     @FXML
     private void initialize() {
+        ObservableList<TableColumn<Map.Entry<Stock, Integer>, Number>> columns = resultsTable.getColumns();
+
         symbolColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getKey().getSymbol()));
-        openColumn.setCellValueFactory(param -> new SimpleDoubleProperty(param.getValue().getKey().getYearOpen() / 100.0));
-        closeColumn.setCellValueFactory(param -> new SimpleDoubleProperty(param.getValue().getKey().getYearClose() / 100.0));
-        guessColumn.setCellValueFactory(param -> new SimpleDoubleProperty(param.getValue().getValue() / 100.0));
+
+        int column = 1;
+        columns.get(column++).setCellValueFactory(param -> new SimpleDoubleProperty(param.getValue().getKey().getYearOpen() / 100.0));
+        columns.get(column++).setCellValueFactory(param -> new SimpleDoubleProperty(param.getValue().getKey().getYearClose() / 100.0));
+        columns.get(column++).setCellValueFactory(param -> new SimpleDoubleProperty(param.getValue().getValue() / 100.0));
+        columns.get(column++).setCellValueFactory(param -> {
+            int start = param.getValue().getKey().getYearOpen();
+            int end = param.getValue().getValue();
+            return new SimpleDoubleProperty(100 * (end - start) / start);
+        });
+        columns.get(column++).setCellValueFactory(param -> new SimpleDoubleProperty(param.getValue().getKey().getPercentIncrease() * 100));
     }
 
     public void setData(DowData data) {

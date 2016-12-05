@@ -2,11 +2,8 @@ package edu.wright.hendrix11.cs7830.machine;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * @author Joe Hendrix
