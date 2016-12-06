@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="edu.wright.hendrix11.cs7830.gui.Controller">
+    <TabPane>
+        <fx:include fx:id="machineTab" source="MachineTab.fxml" />
+        <fx:include fx:id="machineTabTwo" source="MachineTabTwo.fxml" />
+        <fx:include fx:id="stockSummaryTableTab" source="tables/StockSummaryTable.fxml" />
+        <fx:include fx:id="stockDataTableTab" source="tables/StockDataTable.fxml" />
+        <fx:include fx:id="investTab" source="InvestTab.fxml" />
+        <fx:include fx:id="scatterChartTab" source="charts/scatter/ScatterChart.fxml" />
+        <fx:include fx:id="scatterChart2Tab" source="charts/scatter/ScatterChart2.fxml" />
+        <fx:include fx:id="lineChartTab" source="charts/LineChart.fxml" />
+        <fx:include fx:id="pieTab" source="charts/PieChart.fxml"/>
+    </TabPane>
+</VBox>
