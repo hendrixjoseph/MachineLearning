@@ -1,5 +1,7 @@
 package edu.wright.hendrix11.cs7830;
 
+import java.util.Optional;
+
 /**
  * Created by Joe on 11/18/2016.
  */
@@ -12,7 +14,7 @@ public class StockData implements Comparable<StockData> {
     private Integer close;
     private Integer volume;
     private Double percentChangePrice;
-    private Double percentChangeVolume;
+    private Optional<Double> percentChangeVolume;
     private Integer previousWeekVolume;
     private Integer nextWeekOpen;
     private Integer nextWeekClose;
@@ -85,11 +87,11 @@ public class StockData implements Comparable<StockData> {
     }
 
     public Double getPercentChangeVolume() {
-        return percentChangeVolume;
+        return percentChangeVolume.orElse(0.0);
     }
 
     public void setPercentChangeVolume(Double percentChangeVolume) {
-        this.percentChangeVolume = percentChangeVolume;
+        this.percentChangeVolume = Optional.ofNullable(percentChangeVolume);
     }
 
     public Integer getPreviousWeekVolume() {

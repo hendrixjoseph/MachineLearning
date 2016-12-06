@@ -8,11 +8,12 @@ import org.junit.Test;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Map;
+import java.util.OptionalInt;
 
 /**
  * @author Joe Hendrix
  */
-public class StockMachineTest {
+public class StockTimeMachineTest {
 
     private static DowData data;
 
@@ -23,7 +24,7 @@ public class StockMachineTest {
 
     @Test
     public void testStockMachine() throws Exception {
-        StockMachine machine = new StockMachine(data.getStocks(), 4);
+        StockTimeMachine machine = new StockTimeMachine(data.getStocks(), 4);
 
         machine.runMachines(0.01);
 

@@ -7,14 +7,9 @@
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="edu.wright.hendrix11.cs7830.gui.Controller">
-    <MenuBar>
-        <Menu text="File">
-            <MenuItem text="Open"/>
-            <MenuItem text="Exit"/>
-        </Menu>
-    </MenuBar>
     <TabPane>
         <fx:include fx:id="machineTab" source="MachineTab.fxml" />
+        <fx:include fx:id="machineTabTwo" source="MachineTabTwo.fxml" />
         <fx:include fx:id="stockTableTab" source="charts/StockTable.fxml" />
         <fx:include fx:id="investTab" source="InvestTab.fxml" />
         <fx:include fx:id="lineChartTab" source="charts/LineChart.fxml" />

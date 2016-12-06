@@ -33,12 +33,16 @@ public class Controller {
     private MachineController machineTabController;
 
     @FXML
+    private MachineControllerTwo machineTabTwoController;
+
+    @FXML
     private void initialize() throws IOException, ParseException {
 
 
         DowData data = new DowData("dow_jones_index.csv");
 
         machineTabController.setData(data);
+        machineTabTwoController.setData(data);
 
         List<Stock> stocks = data.getStocks();
 
