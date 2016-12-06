@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.*;
+import java.util.stream.IntStream;
 
 /**
  * Created by Joe on 10/21/2016.
@@ -24,7 +25,7 @@ public class DowData {
                 StockData data = new StockData();
                 String symbol;
 
-                String items[] = line.split(",");
+                String[] items = line.split(",");
 
                 int i = 0;
 
@@ -32,6 +33,7 @@ public class DowData {
 
                 symbol = items[i++];
 
+                data.setSymbol(symbol);
                 data.setDayOfYear(StringParser.getDayOfYear(items[i++]));
                 data.setOpen(StringParser.parseDollars(items[i++]));
                 data.setHigh(StringParser.parseDollars(items[i++]));

@@ -2,9 +2,11 @@ package edu.wright.hendrix11.cs7830.gui;
 
 import edu.wright.hendrix11.cs7830.DowData;
 import edu.wright.hendrix11.cs7830.Stock;
-import edu.wright.hendrix11.cs7830.gui.charts.LineChartGui;
-import edu.wright.hendrix11.cs7830.gui.charts.PieGui;
-import edu.wright.hendrix11.cs7830.gui.charts.StockTable;
+import edu.wright.hendrix11.cs7830.gui.charts.*;
+import edu.wright.hendrix11.cs7830.gui.charts.scatter.ScatterChart2Gui;
+import edu.wright.hendrix11.cs7830.gui.charts.scatter.ScatterChartGui;
+import edu.wright.hendrix11.cs7830.gui.tables.StockDataTable;
+import edu.wright.hendrix11.cs7830.gui.tables.StockSummaryTable;
 import javafx.fxml.FXML;
 
 import java.io.IOException;
@@ -15,7 +17,7 @@ import java.util.List;
  * Created by Joe on 11/29/2016.
  */
 public class Controller {
-    
+
     @FXML
     private InvestTabController investTabController;
 
@@ -24,29 +26,41 @@ public class Controller {
     private PieGui pieTabController;
 
     @FXML
+    private ScatterChartGui scatterChartTabController;
+
+    @FXML
+    private ScatterChart2Gui scatterChart2TabController;
+
+    @FXML
     private LineChartGui lineChartTabController;
 
     @FXML
-    private StockTable stockTableTabController;
+    private StockSummaryTable stockSummaryTableTabController;
+
+    @FXML
+    private StockDataTable stockDataTableTabController;
 
     @FXML
     private MachineController machineTabController;
 
-    private DowData data;
+    @FXML
+    private MachineControllerTwo machineTabTwoController;
 
     @FXML
     private void initialize() throws IOException, ParseException {
-
-
-        data = new DowData("dow_jones_index.csv");
+        DowData data = new DowData("dow_jones_index.csv");
 
         machineTabController.setData(data);
+        machineTabTwoController.setData(data);
 
         List<Stock> stocks = data.getStocks();
 
         pieTabController.setStocks(stocks);
+        scatterChartTabController.setStocks(stocks);
+        scatterChart2TabController.setStocks(stocks);
         lineChartTabController.setStocks(stocks);
-        stockTableTabController.setStocks(stocks);
+        stockSummaryTableTabController.setStocks(stocks);
+        stockDataTableTabController.setStocks(stocks);
         investTabController.setStocks(stocks);
     }
 }

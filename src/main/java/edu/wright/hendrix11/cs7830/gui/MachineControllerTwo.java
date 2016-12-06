@@ -7,31 +7,23 @@ import edu.wright.hendrix11.cs7830.machine.StockMachine;
 import edu.wright.hendrix11.cs7830.machine.StockTimeMachine;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.SortEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-import javax.swing.Action;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Created by Joe on 12/1/2016.
  */
-public class MachineController extends SuperMachineController {
+public class MachineControllerTwo extends SuperMachineController {
+
     @FXML
     public TextField numWeeksField;
     @FXML
@@ -61,18 +53,10 @@ public class MachineController extends SuperMachineController {
     }
 
     public void clickLearnButton(ActionEvent event) {
-        try {
-            int numWeeks = Integer.parseInt(numWeeksField.getText());
+        StockMachine machine = new StockChangeMachine(data.getStocks());
 
-            StockTimeMachine machine = new StockTimeMachine(data.getStocks(), numWeeks);
+        String out = runMachine(machine, normalizeInputBox.isSelected(), normalizeOutputBox.isSelected(), learningRateField);
 
-            String out = runMachine(machine, normalizeInputBox.isSelected(), normalizeOutputBox.isSelected(), learningRateField);
-            linearMachineText.setText(out);
-        } catch (Exception e) {
-            linearMachineText.setText("Error: " + e.getClass().getName());
-            e.printStackTrace();
-        }
+        linearMachineText.setText(out);
     }
-
-
 }

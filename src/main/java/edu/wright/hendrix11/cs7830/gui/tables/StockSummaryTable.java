@@ -1,4 +1,4 @@
-package edu.wright.hendrix11.cs7830.gui.charts;
+package edu.wright.hendrix11.cs7830.gui.tables;
 
 import edu.wright.hendrix11.cs7830.Stock;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by Joe on 12/1/2016.
  */
-public class StockTable {
+public class StockSummaryTable {
     @FXML
     private TableView stockTable;
 

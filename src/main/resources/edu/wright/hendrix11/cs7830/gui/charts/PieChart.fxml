@@ -3,7 +3,21 @@
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Tab?>
 
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Slider?>
 <Tab xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
      fx:controller="edu.wright.hendrix11.cs7830.gui.charts.PieGui" closable="false" text="Pie Chart">
-    <PieChart fx:id="pieChart"/>
+    <VBox>
+        <PieChart fx:id="pieChart"/>
+        <Slider fx:id="weekSlider"
+                max="24"
+                min="0"
+                blockIncrement="1"
+                showTickLabels="true"
+                showTickMarks="true"
+                majorTickUnit="1"
+                minorTickCount="0"
+                snapToTicks="true"
+                value="0" />
+    </VBox>
 </Tab>

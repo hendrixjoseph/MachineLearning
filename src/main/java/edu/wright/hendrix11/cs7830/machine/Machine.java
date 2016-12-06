@@ -1,9 +1,12 @@
 package edu.wright.hendrix11.cs7830.machine;
 
 import edu.wright.hendrix11.cs7830.tools.ArrayTools;
+import edu.wright.hendrix11.cs7830.tools.Normalizer;
+import edu.wright.hendrix11.cs7830.tools.RandomOrder;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -13,11 +16,24 @@ public abstract class Machine {
     private List<Double> thetas;
 
     private List<Double>[] inputs;
-    private double output;
+    private List<Double> outputs;
 
-    public Machine(double output, List<Double>[] inputs) {
-        this.output = output;
+    private Normalizer outNormalizer = new Normalizer();
+    private Normalizer[] inNormalizer;
+
+    private int generation;
+
+    private List<Double> cost = new ArrayList<>();
+
+    public Machine(List<Double> outputs, List<Double>[] inputs) {
+        this.outputs = outputs;
         this.inputs = inputs;
+
+        inNormalizer = new Normalizer[inputs.length];
+
+        for (int i = 0; i < inputs.length; i++) {
+            inNormalizer[i] = new Normalizer();
+        }
 
         thetas = new ArrayList<>();
 
@@ -30,22 +46,44 @@ public abstract class Machine {
         }
     }
 
+    public void normalizeOutputs() {
+        outNormalizer = new Normalizer(outputs);
+    }
+
+    public void normalizeInputs() {
+        inNormalizer = new Normalizer[inputs.length];
+
+        for (int i = 0; i < inNormalizer.length; i++) {
+            inNormalizer[i] = new Normalizer(inputs[i]);
+        }
+    }
+
+    public int getGeneration() {
+        return generation;
+    }
+
     public void learn(double learningRate) {
         if (learningRate <= 0 || learningRate > 1) {
             throw new InvalidParameterException("Learning rate must be from 0 exclusive to 1 inclusive!");
         }
 
-        for (int generation = 0; generation < 1_000_000; generation++) {
+        for (generation = 0; generation < 100_000; generation++) {
             List<Double> deltaThetas = ArrayTools.createList(thetas.size(), 0.0);
 
-            double costSum = 0;
+            final double[] costSum = {0};
 
-            for (int i = 0; i < inputs.length; i++) {
+            RandomOrder order = new RandomOrder(inputs.length);
+
+            order.indexStream().forEach(i -> {
                 List<Double> data = new ArrayList<>();
 
-                double desired = output;
+                for (List<Double> input : inputs) {
+                    data.add(input.get(i));
+                }
+
+                double desired = outputs.get(i);
                 double cost = cost(data, desired);
-                costSum += cost;
+                costSum[0] += cost;
 
                 for (int j = 0; j < deltaThetas.size(); j++) {
                     double deltaTheta = deltaThetas.get(j);
@@ -60,7 +98,7 @@ public abstract class Machine {
 
                     assert Double.isFinite(deltaTheta) : deltaTheta;
                 }
-            }
+            });
 
             for (int j = 0; j < thetas.size(); j++) {
                 double theta = thetas.get(j) - learningRate * deltaThetas.get(j);
@@ -68,13 +106,21 @@ public abstract class Machine {
                 assert Double.isFinite(theta) : "theta: " + theta + " deltaTheta: " + deltaThetas.get(j);
             }
 
-            if (costSum < 0.0001 || isDeltaSmall(deltaThetas)) {
+            cost.add(costSum[0]);
+
+            if (costSum[0] < 0.0001 || isDeltaSmall(deltaThetas)) {
                 break;
             }
         }
     }
 
-    protected double cost(List<Double> data, double desired) {
+    public List<Double> getCost() {
+        return cost;
+    }
+
+    private double cost(List<Double> data, double desired) {
+        desired = outNormalizer.normalize(desired);
+
         double cost = hypothesis(data) - desired;
         assert Double.isFinite(cost) : "Data: " + data + " Desired: " + desired;
         return cost;
@@ -83,10 +129,24 @@ public abstract class Machine {
     protected abstract double hypothesis(List<Double> data, List<Double> thetas);
 
     public double hypothesis(List<Double> data) {
-        return hypothesis(data, thetas);
+
+        List<Double> normalizedData = new ArrayList<>();
+
+        for (int i = 0; i < data.size(); i++) {
+            normalizedData.add(inNormalizer[i].normalize(data.get(i)));
+        }
+
+        double output = hypothesis(normalizedData, thetas);
+
+
+        return outNormalizer.denormalize(output);
     }
 
-    protected boolean isDeltaSmall(List<Double> deltaThetas) {
+    public double hypothesis(Double data) {
+        return hypothesis(Arrays.asList(new Double[]{data}));
+    }
+
+    private boolean isDeltaSmall(List<Double> deltaThetas) {
         for (double deltaTheta : deltaThetas) {
             if (Math.abs(deltaTheta) > 0.0001) {
                 return false;

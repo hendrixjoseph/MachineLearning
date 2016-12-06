@@ -2,7 +2,9 @@ package edu.wright.hendrix11.cs7830;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
+import java.util.function.ToDoubleFunction;
 
 /**
  * Created by Joe on 11/18/2016.
@@ -15,6 +17,15 @@ public class Stock {
 
     public Stock(String symbol) {
         this.symbol = symbol;
+    }
+
+    public DoubleSummaryStatistics getStatsFor(ToDoubleFunction<StockData> d) {
+        return data.stream().mapToDouble(d).summaryStatistics();
+    }
+
+    public DoubleSummaryStatistics getStatsFor(ToDoubleFunction<StockData> d, int weeks) {
+        System.out.println(weeks);
+        return data.stream().limit(weeks).mapToDouble(d).summaryStatistics();
     }
 
     public String getSymbol() {
@@ -69,14 +80,14 @@ public class Stock {
     public int numDataPoints() {
         return data.size();
     }
-    
+
     public int invest(double amount) {
         return invest(amount, 0);
     }
-    
+
     public int invest(double amount, int week) {
         int costPerShare = data.get(week).getOpen();
-        
+
         return (int) (getYearClose() * amount / costPerShare);
     }
 
@@ -86,7 +97,7 @@ public class Stock {
     }
 
     public boolean equals(Stock stock) {
-        return stock != null && symbol == stock.symbol;
+        return stock != null && symbol.equals(stock.symbol);
     }
 
     @Override

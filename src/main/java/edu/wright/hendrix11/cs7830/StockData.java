@@ -1,9 +1,12 @@
 package edu.wright.hendrix11.cs7830;
 
+import java.util.Optional;
+
 /**
  * Created by Joe on 11/18/2016.
  */
 public class StockData implements Comparable<StockData> {
+    private String symbol;
     private Integer quarter;
     private Integer dayOfYear;
     private Integer open;
@@ -12,13 +15,21 @@ public class StockData implements Comparable<StockData> {
     private Integer close;
     private Integer volume;
     private Double percentChangePrice;
-    private Double percentChangeVolume;
-    private Integer previousWeekVolume;
+    private Optional<Double> percentChangeVolume;
+    private Optional<Integer> previousWeekVolume;
     private Integer nextWeekOpen;
     private Integer nextWeekClose;
     private Double percentChangeNextWeekPrice;
     private Integer daysToNextDividend;
     private Double percentReturnNextDividend;
+
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
 
     public Integer getQuarter() {
         return quarter;
@@ -85,19 +96,19 @@ public class StockData implements Comparable<StockData> {
     }
 
     public Double getPercentChangeVolume() {
-        return percentChangeVolume;
+        return percentChangeVolume.orElse(0.0);
     }
 
     public void setPercentChangeVolume(Double percentChangeVolume) {
-        this.percentChangeVolume = percentChangeVolume;
+        this.percentChangeVolume = Optional.ofNullable(percentChangeVolume);
     }
 
     public Integer getPreviousWeekVolume() {
-        return previousWeekVolume;
+        return previousWeekVolume.orElse(0);
     }
 
     public void setPreviousWeekVolume(Integer previousWeekVolume) {
-        this.previousWeekVolume = previousWeekVolume;
+        this.previousWeekVolume = Optional.ofNullable(previousWeekVolume);
     }
 
     public Integer getNextWeekOpen() {

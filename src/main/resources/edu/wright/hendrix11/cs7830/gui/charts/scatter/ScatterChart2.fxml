@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.ScatterChart?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Slider?>
+<Tab xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
+     fx:controller="edu.wright.hendrix11.cs7830.gui.charts.scatter.ScatterChart2Gui" closable="false" text="Percent Return Scatter Chart">
+    <VBox>
+    <HBox>
+        <VBox fx:id="radioBox" />
+        <ScatterChart fx:id="scatterChart" legendVisible="false"  title="Percent Return">
+            <xAxis>
+                <NumberAxis label="Day of Year"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Percent Change in Price"/>
+            </yAxis>
+        </ScatterChart>
+    </HBox>
+    <Slider fx:id="weekSlider"
+            max="24"
+            min="0"
+            blockIncrement="1"
+            showTickLabels="true"
+            showTickMarks="true"
+            majorTickUnit="1"
+            minorTickCount="0"
+            snapToTicks="true"
+            value="24" />
+    </VBox>
+</Tab>

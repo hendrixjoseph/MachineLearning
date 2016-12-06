@@ -11,6 +11,7 @@ import java.util.Date;
 public class StringParser {
     private static DateFormat readDateFormat = new SimpleDateFormat("M/d/yyyy");
     private static DateFormat dayOfYearDateFormat = new SimpleDateFormat("D");
+
     private StringParser() {
 
     }
