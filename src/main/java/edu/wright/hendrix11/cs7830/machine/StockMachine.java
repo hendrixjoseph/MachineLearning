@@ -8,7 +8,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 
 /**
  * @author Joe Hendrix
@@ -19,7 +18,7 @@ public class StockMachine {
 
     public StockMachine(List<Stock> stocks, int numWeeks) {
 
-        for(Stock stock : stocks) {
+        for (Stock stock : stocks) {
             List<Double> outputs = new ArrayList<>();
             List<Double> inputs = new ArrayList<>();
 
@@ -45,10 +44,18 @@ public class StockMachine {
         return machines.values().stream().min(Comparator.comparingInt(Machine::getGeneration)).get().getGeneration();
     }
 
+    public void normalizeInputs() {
+        machines.values().forEach(Machine::normalizeInputs);
+    }
+
+    public void normalizeOutputs() {
+        machines.values().forEach(Machine::normalizeOutputs);
+    }
+
     public Map<Stock, Integer> getResults() {
         Map<Stock, Integer> results = new HashMap<>();
 
-        for(Map.Entry<Stock, Machine> entry : machines.entrySet()) {
+        for (Map.Entry<Stock, Machine> entry : machines.entrySet()) {
             int yearCloseGuess = (int) entry.getValue().hypothesis(175.0);
             results.put(entry.getKey(), yearCloseGuess);
         }

@@ -7,10 +7,10 @@
      fx:controller="edu.wright.hendrix11.cs7830.gui.charts.StockTable" closable="false" text="Stock Data">
     <TableView fx:id="stockTable">
         <columns>
-            <TableColumn text="Symbol" fx:id="symbolColumn"></TableColumn>
-            <TableColumn text="Year Open" fx:id="openColumn"></TableColumn>
-            <TableColumn text="Year Close" fx:id="closeColumn"></TableColumn>
-            <TableColumn text="Percent Increase" fx:id="increaseColumn"></TableColumn>
+            <TableColumn text="Symbol" fx:id="symbolColumn"/>
+            <TableColumn text="Year Open" fx:id="openColumn"/>
+            <TableColumn text="Mid Year Close" fx:id="closeColumn"/>
+            <TableColumn text="Mid Year Percent Increase" fx:id="increaseColumn"/>
         </columns>
     </TableView>
 </Tab>

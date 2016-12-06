@@ -2,7 +2,6 @@ package edu.wright.hendrix11.cs7830.machine;
 
 import edu.wright.hendrix11.cs7830.DowData;
 import edu.wright.hendrix11.cs7830.Stock;
-import edu.wright.hendrix11.cs7830.StockData;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -34,5 +33,4 @@ public class StockMachineTest {
             System.out.println(result.getKey() + "\t" + result.getValue() / 100.0);
         }
     }
-
 }

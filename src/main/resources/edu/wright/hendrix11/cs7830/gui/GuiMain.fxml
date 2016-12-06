@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
 <VBox xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="edu.wright.hendrix11.cs7830.gui.Controller">
     <MenuBar>
@@ -15,9 +15,6 @@
     </MenuBar>
     <TabPane>
         <fx:include fx:id="machineTab" source="MachineTab.fxml" />
-        <Tab closable="false" text="Neural Network">
-
-        </Tab>
         <fx:include fx:id="stockTableTab" source="charts/StockTable.fxml" />
         <fx:include fx:id="investTab" source="InvestTab.fxml" />
         <fx:include fx:id="lineChartTab" source="charts/LineChart.fxml" />

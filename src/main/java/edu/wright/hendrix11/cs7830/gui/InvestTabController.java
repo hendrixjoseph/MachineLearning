@@ -7,12 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
 import javafx.scene.control.cell.CheckBoxListCell;
-import javafx.util.converter.IntegerStringConverter;
 
-import java.text.DecimalFormat;
-import java.text.ParsePosition;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,7 +66,7 @@ public class InvestTabController {
             } else {
                 outputLabel.setText("Select something, will you?");
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
             outputLabel.setText("Integers only, please!");
         }
     }

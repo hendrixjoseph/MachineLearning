@@ -69,14 +69,14 @@ public class Stock {
     public int numDataPoints() {
         return data.size();
     }
-    
+
     public int invest(double amount) {
         return invest(amount, 0);
     }
-    
+
     public int invest(double amount, int week) {
         int costPerShare = data.get(week).getOpen();
-        
+
         return (int) (getYearClose() * amount / costPerShare);
     }
 
@@ -86,7 +86,7 @@ public class Stock {
     }
 
     public boolean equals(Stock stock) {
-        return stock != null && symbol == stock.symbol;
+        return stock != null && symbol.equals(stock.symbol);
     }
 
     @Override

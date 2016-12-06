@@ -15,7 +15,7 @@ import java.util.List;
  * Created by Joe on 11/29/2016.
  */
 public class Controller {
-    
+
     @FXML
     private InvestTabController investTabController;
 
@@ -32,13 +32,11 @@ public class Controller {
     @FXML
     private MachineController machineTabController;
 
-    private DowData data;
-
     @FXML
     private void initialize() throws IOException, ParseException {
 
 
-        data = new DowData("dow_jones_index.csv");
+        DowData data = new DowData("dow_jones_index.csv");
 
         machineTabController.setData(data);
 

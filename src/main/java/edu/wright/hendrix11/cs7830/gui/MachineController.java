@@ -2,21 +2,19 @@ package edu.wright.hendrix11.cs7830.gui;
 
 import edu.wright.hendrix11.cs7830.DowData;
 import edu.wright.hendrix11.cs7830.Stock;
-import edu.wright.hendrix11.cs7830.StockData;
 import edu.wright.hendrix11.cs7830.machine.StockMachine;
-import edu.wright.hendrix11.cs7830.machine.Machine;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by Joe on 12/1/2016.
@@ -26,6 +24,10 @@ public class MachineController {
     public TextField numWeeksField;
     @FXML
     public TextField learningRateField;
+    @FXML
+    public CheckBox normalizeInputBox;
+    @FXML
+    public CheckBox normalizeOutputBox;
     @FXML
     private Label linearMachineText;
 
@@ -66,13 +68,21 @@ public class MachineController {
 
             StockMachine machine = new StockMachine(data.getStocks(), numWeeks);
 
+            if (normalizeInputBox.isSelected()) {
+                machine.normalizeInputs();
+            }
+
+            if (normalizeOutputBox.isSelected()) {
+                machine.normalizeOutputs();
+            }
+
             machine.runMachines(learningRate);
 
             resultsTable.getItems().clear();
             resultsTable.getItems().addAll(machine.getResults().entrySet());
 
             linearMachineText.setText("Completed in " + machine.maxGeneration() + " generations.");
-        } catch(Exception e) {
+        } catch (Exception e) {
             linearMachineText.setText("Error: " + e.getClass().getName());
         }
     }

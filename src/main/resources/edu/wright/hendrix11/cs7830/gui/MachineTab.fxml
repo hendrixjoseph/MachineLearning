@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.CheckBox?>
 <Tab xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
      fx:controller="edu.wright.hendrix11.cs7830.gui.MachineController"
      closable="false" text="Linear Machine">
@@ -17,21 +18,21 @@
             <TextField fx:id="numWeeksField" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"/>
             <Label text="Learning Rate"/>
             <TextField fx:id="learningRateField" text="0.01" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0"/>
+
+            <CheckBox fx:id="normalizeInputBox" text="Normalize inputs"/>
+            <CheckBox fx:id="normalizeOutputBox" text="Normalize outputs" />
             <Button text="Learn!" onAction="#clickLearnButton"/>
         </HBox>
         <TableView fx:id="resultsTable">
             <columns>
-                <TableColumn text="Symbol" fx:id="symbolColumn"></TableColumn>
+                <TableColumn text="Symbol" fx:id="symbolColumn"/>
                 <TableColumn text="Year Open" />
-                <TableColumn text="Year Close (Guess)" />
-                <TableColumn text="Year Close (Actual)" />
-                <TableColumn text="Return (Guess)" />
-                <TableColumn text="Return (Actual)" />
+                <TableColumn text="Mid Year Close (Guess)" />
+                <TableColumn text="Mid Year Close (Actual)" />
+                <TableColumn text="Mid Year Return (Guess)" />
+                <TableColumn text="Mid Year Return (Actual)" />
             </columns>
         </TableView>
-        <Label fx:id="linearMachineText">
-            Hello!
-        </Label>
-
+        <Label fx:id="linearMachineText" />
     </VBox>
 </Tab>

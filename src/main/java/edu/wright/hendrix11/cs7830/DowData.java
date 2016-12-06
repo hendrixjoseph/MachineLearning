@@ -6,7 +6,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Joe on 10/21/2016.
@@ -24,7 +28,7 @@ public class DowData {
                 StockData data = new StockData();
                 String symbol;
 
-                String items[] = line.split(",");
+                String[] items = line.split(",");
 
                 int i = 0;
 

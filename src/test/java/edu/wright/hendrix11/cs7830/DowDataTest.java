@@ -1,14 +1,10 @@
 package edu.wright.hendrix11.cs7830;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.text.ParseException;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Joe on 12/3/2016.

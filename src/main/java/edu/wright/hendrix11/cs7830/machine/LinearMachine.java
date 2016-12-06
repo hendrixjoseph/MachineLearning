@@ -15,6 +15,7 @@ public class LinearMachine extends Machine {
         this(outputs, new List[]{inputs});
     }
 
+    @Override
     protected double hypothesis(List<Double> data, List<Double> thetas) {
         double result = thetas.get(thetas.size() - 1);
 

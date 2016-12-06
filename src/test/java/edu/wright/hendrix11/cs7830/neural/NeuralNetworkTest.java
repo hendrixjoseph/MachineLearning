@@ -2,8 +2,6 @@ package edu.wright.hendrix11.cs7830.neural;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by Joe on 11/15/2016.
  */
