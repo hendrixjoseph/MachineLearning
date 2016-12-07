@@ -8,6 +8,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
@@ -24,6 +25,8 @@ import java.util.stream.Collectors;
  */
 public class LinearTab2Controller {
 
+    @FXML
+    public Label bottomLabel;
     @FXML
     private HBox parameterBoxes;
     @FXML
@@ -55,6 +58,8 @@ public class LinearTab2Controller {
         Set<Map.Entry<Stock, Integer>> entries = machine.getResults().entrySet();
 
         resultsTable.getItems().setAll(entries);
+
+        LinearTabController.setLabel(entries, bottomLabel);
     }
 
     @FXML
@@ -93,5 +98,7 @@ public class LinearTab2Controller {
         Set<Map.Entry<Stock, Integer>> entries = machine.getResults().entrySet();
 
         resultsTable.getItems().setAll(entries);
+
+        LinearTabController.setLabel(entries, bottomLabel);
     }
 }

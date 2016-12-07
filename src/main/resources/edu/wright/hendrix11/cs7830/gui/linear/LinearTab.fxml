@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.Label?>
 <Tab closable="false" text="Linear Regression (Price vs Day)" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wright.hendrix11.cs7830.gui.linear.LinearTabController">
     <VBox alignment="CENTER">
         <Slider fx:id="weekSlider" blockIncrement="1" majorTickUnit="1" max="24" maxWidth="750.0" min="1" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="24">
@@ -26,5 +27,6 @@
             <Insets bottom="20.0" left="20.0" right="20.0" />
          </VBox.margin>
         </TableView>
+        <Label fx:id="bottomLabel" />
     </VBox>
 </Tab>
