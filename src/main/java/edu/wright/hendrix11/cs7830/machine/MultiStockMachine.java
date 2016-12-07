@@ -25,7 +25,7 @@ public class MultiStockMachine {
 
         double[] y = stocks.stream()
                 .map(stock -> stock.getData().stream()
-                        .mapToDouble(StockData::getPercentChangePrice))
+                        .mapToDouble(StockData::getPercentChangeNextWeekPrice))
                 .flatMapToDouble(d -> d).toArray();
 
         int size = stocks.size() * stocks.get(0).getData().size();
