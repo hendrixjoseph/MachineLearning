@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.VBox?>
-<Tab xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
-     fx:controller="edu.wright.hendrix11.cs7830.gui.linear.LinearTabController"
-     closable="false" text="Linear Regression (Price vs Day)">
-    <VBox alignment="BOTTOM_LEFT">
-        <Slider fx:id="weekSlider"
-                max="24"
-                min="1"
-                blockIncrement="1"
-                showTickLabels="true"
-                showTickMarks="true"
-                majorTickUnit="1"
-                minorTickCount="0"
-                snapToTicks="true"
-                value="24" />
+
+<Tab closable="false" text="Linear Regression (Price vs Day)" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wright.hendrix11.cs7830.gui.linear.LinearTabController">
+    <VBox alignment="CENTER">
+        <Slider fx:id="weekSlider" blockIncrement="1" majorTickUnit="1" max="24" maxWidth="750.0" min="1" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="24">
+         <padding>
+            <Insets bottom="10.0" top="10.0" />
+         </padding></Slider>
         <TableView fx:id="resultsTable">
             <columns>
-                <TableColumn text="Symbol" fx:id="symbolColumn"/>
+                <TableColumn fx:id="symbolColumn" text="Symbol" />
                 <TableColumn text="Year Open" />
                 <TableColumn text="Mid Year Close (Guess)" />
                 <TableColumn text="Mid Year Close (Actual)" />
                 <TableColumn text="Mid Year Return (Guess)" />
                 <TableColumn text="Mid Year Return (Actual)" />
             </columns>
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" />
+         </VBox.margin>
         </TableView>
     </VBox>
 </Tab>

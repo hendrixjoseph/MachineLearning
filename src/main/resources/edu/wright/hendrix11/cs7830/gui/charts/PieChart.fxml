@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.control.Tab?>
-
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Slider?>
-<Tab xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
-     fx:controller="edu.wright.hendrix11.cs7830.gui.charts.PieGui" closable="false" text="Pie Chart">
-    <VBox>
-        <PieChart fx:id="pieChart"/>
-        <Slider fx:id="weekSlider"
-                max="24"
-                min="0"
-                blockIncrement="1"
-                showTickLabels="true"
-                showTickMarks="true"
-                majorTickUnit="1"
-                minorTickCount="0"
-                snapToTicks="true"
-                value="0" />
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.VBox?>
+
+<Tab closable="false" text="Pie Chart" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wright.hendrix11.cs7830.gui.charts.PieGui">
+    <VBox alignment="CENTER">
+        <PieChart fx:id="pieChart" />
+        <Slider fx:id="weekSlider" blockIncrement="1" majorTickUnit="1" max="24" maxWidth="750.0" min="0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="0" />
     </VBox>
 </Tab>

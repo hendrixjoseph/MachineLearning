@@ -5,17 +5,16 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Slider?>
-<Tab xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
-     fx:controller="edu.wright.hendrix11.cs7830.gui.charts.scatter.ScatterChartGui" closable="false" text="Percent Change Scatter Chart">
-    <HBox>
-        <VBox fx:id="radioBox" />
+
+<Tab closable="false" text="Percent Change Scatter Chart" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wright.hendrix11.cs7830.gui.charts.scatter.ScatterChartGui">
+    <HBox alignment="CENTER">
+        <VBox fx:id="radioBox" alignment="CENTER_LEFT" spacing="10.0" />
         <ScatterChart fx:id="scatterChart" legendVisible="false" title="Price Changes">
             <xAxis>
-                <NumberAxis label="Day of Year"/>
+                <NumberAxis label="Day of Year" />
             </xAxis>
             <yAxis>
-                <NumberAxis label="Percent Change in Price"/>
+                <NumberAxis label="Percent Change in Price" />
             </yAxis>
         </ScatterChart>
     </HBox>

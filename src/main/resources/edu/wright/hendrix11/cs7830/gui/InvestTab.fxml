@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -7,17 +8,21 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+
 <Tab closable="false" text="Invest" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wright.hendrix11.cs7830.gui.InvestTabController">
-    <VBox>
-        <HBox>
+    <VBox alignment="CENTER" spacing="10.0">
+        <HBox alignment="CENTER" spacing="10.0">
             <Label text="Invest this much: " />
             <TextField fx:id="amountField" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" />
             <Label text="Starting this week: " />
             <TextField fx:id="weekField" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="100.0" text="1" />
             <Button onAction="#invest" text="Invest!" />
+         <padding>
+            <Insets top="10.0" />
+         </padding>
         </HBox>
         <Label text="In the selected stocks:" />
-        <ListView fx:id="stockList" />
+        <ListView fx:id="stockList" maxWidth="200.0" />
         <Label fx:id="outputLabel" />
     </VBox>
 </Tab>
