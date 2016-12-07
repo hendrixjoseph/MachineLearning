@@ -21,10 +21,11 @@ public class MultiStockMachine {
 
     public MultiStockMachine(List<Stock> stocks, List<ToDoubleFunction<StockData>> data) {
         this.stocks = stocks;
+        this.data = data;
 
         double[] y = stocks.stream()
                 .map(stock -> stock.getData().stream()
-                        .mapToDouble(d -> d.getPercentChangePrice()))
+                        .mapToDouble(StockData::getPercentChangePrice))
                 .flatMapToDouble(d -> d).toArray();
 
         int size = stocks.size() * stocks.get(0).getData().size();
@@ -59,7 +60,7 @@ public class MultiStockMachine {
             Double value = stock.getData().get(0).getClose().doubleValue();
 
             for(StockData data : stock.getData()) {
-                double[] input = this.data.stream().mapToDouble(td -> td.applyAsDouble(data)).toArray();;
+                double[] input = this.data.stream().mapToDouble(td -> td.applyAsDouble(data)).toArray();
                 double percentChange = guess(input);
                 value *= 1.0 + percentChange / 100.0;
             }

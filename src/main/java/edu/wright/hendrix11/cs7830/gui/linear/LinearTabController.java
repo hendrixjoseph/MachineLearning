@@ -1,6 +1,5 @@
 package edu.wright.hendrix11.cs7830.gui.linear;
 
-import edu.wright.hendrix11.cs7830.DowData;
 import edu.wright.hendrix11.cs7830.Stock;
 import edu.wright.hendrix11.cs7830.machine.SimpleStockMachine;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -14,7 +13,6 @@ import javafx.scene.control.TableView;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Created by Joe on 12/1/2016.
@@ -33,9 +31,7 @@ public class LinearTabController {
 
     @FXML
     private void initialize() {
-        weekSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            calculateForWeek(newValue.intValue());
-        });
+        weekSlider.valueProperty().addListener((observable, oldValue, newValue) -> calculateForWeek(newValue.intValue()));
 
         ObservableList<TableColumn<Map.Entry<Stock, Integer>, Number>> columns = resultsTable.getColumns();
 

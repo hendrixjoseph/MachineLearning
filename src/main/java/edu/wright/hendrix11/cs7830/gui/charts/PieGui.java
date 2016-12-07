@@ -1,13 +1,10 @@
 package edu.wright.hendrix11.cs7830.gui.charts;
 
 import edu.wright.hendrix11.cs7830.Stock;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Slider;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,9 +21,7 @@ public class PieGui {
 
     @FXML
     private void initialize() {
-        weekSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            setWeek(newValue.intValue());
-        });
+        weekSlider.valueProperty().addListener((observable, oldValue, newValue) -> setWeek(newValue.intValue()));
     }
 
     public void setStocks(List<Stock> stocks) {

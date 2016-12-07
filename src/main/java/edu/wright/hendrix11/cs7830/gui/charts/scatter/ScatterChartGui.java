@@ -5,7 +5,6 @@ import edu.wright.hendrix11.cs7830.StockData;
 import javafx.fxml.FXML;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Slider;
 import javafx.scene.layout.VBox;
 
 import java.util.List;
@@ -27,6 +26,7 @@ public class ScatterChartGui extends SuperScatter {
         initialize(radioBox);
     }
 
+    @Override
     protected void changeX(String text) {
         ToDoubleFunction<StockData> f = buttons.get(text);
 

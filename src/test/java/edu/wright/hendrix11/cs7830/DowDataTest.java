@@ -1,7 +1,5 @@
 package edu.wright.hendrix11.cs7830;
 
-import edu.wright.hendrix11.cs7830.machine.MultiStockMachine;
-import org.apache.commons.math3.stat.regression.MultipleLinearRegression;
 import org.apache.commons.math3.stat.regression.OLSMultipleLinearRegression;
 import org.apache.commons.math3.stat.regression.SimpleRegression;
 import org.junit.BeforeClass;

@@ -1,8 +1,6 @@
 package edu.wright.hendrix11.cs7830.gui.charts.scatter;
 
 import edu.wright.hendrix11.cs7830.StockData;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
@@ -38,6 +36,7 @@ public class ScatterChart2Gui extends SuperScatter {
         });
     }
 
+    @Override
     protected void changeX(String text) {
         lastText = text;
 

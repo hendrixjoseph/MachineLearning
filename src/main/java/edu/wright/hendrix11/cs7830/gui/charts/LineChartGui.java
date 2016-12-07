@@ -2,9 +2,7 @@ package edu.wright.hendrix11.cs7830.gui.charts;
 
 import edu.wright.hendrix11.cs7830.Stock;
 import edu.wright.hendrix11.cs7830.StockData;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.chart.LineChart;
@@ -16,9 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Created by Joe on 12/1/2016.
@@ -99,13 +95,9 @@ public class LineChartGui {
     }
 
     private void clickAll(VBox boxes, boolean value) {
-        boxes.getChildren().forEach(new Consumer<Node>() {
-
-            @Override
-            public void accept(Node node) {
-                if(node instanceof CheckBox) {
-                    ((CheckBox)node).setSelected(value);
-                }
+        boxes.getChildren().forEach(node -> {
+            if(node instanceof CheckBox) {
+                ((CheckBox)node).setSelected(value);
             }
         });
     }

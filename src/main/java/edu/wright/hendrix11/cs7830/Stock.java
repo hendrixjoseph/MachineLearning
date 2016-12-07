@@ -24,7 +24,6 @@ public class Stock {
     }
 
     public DoubleSummaryStatistics getStatsFor(ToDoubleFunction<StockData> d, int weeks) {
-        System.out.println(weeks);
         return data.stream().limit(weeks).mapToDouble(d).summaryStatistics();
     }
 
