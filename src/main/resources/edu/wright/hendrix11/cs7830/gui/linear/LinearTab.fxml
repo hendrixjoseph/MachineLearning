@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<Tab xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
+     fx:controller="edu.wright.hendrix11.cs7830.gui.linear.LinearTabController"
+     closable="false" text="Linear Regression (Price vs Day)">
+    <VBox alignment="BOTTOM_LEFT">
+        <Slider fx:id="weekSlider"
+                max="24"
+                min="1"
+                blockIncrement="1"
+                showTickLabels="true"
+                showTickMarks="true"
+                majorTickUnit="1"
+                minorTickCount="0"
+                snapToTicks="true"
+                value="24" />
+        <TableView fx:id="resultsTable">
+            <columns>
+                <TableColumn text="Symbol" fx:id="symbolColumn"/>
+                <TableColumn text="Year Open" />
+                <TableColumn text="Mid Year Close (Guess)" />
+                <TableColumn text="Mid Year Close (Actual)" />
+                <TableColumn text="Mid Year Return (Guess)" />
+                <TableColumn text="Mid Year Return (Actual)" />
+            </columns>
+        </TableView>
+    </VBox>
+</Tab>

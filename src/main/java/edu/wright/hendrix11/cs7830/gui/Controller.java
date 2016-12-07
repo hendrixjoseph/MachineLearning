@@ -5,6 +5,8 @@ import edu.wright.hendrix11.cs7830.Stock;
 import edu.wright.hendrix11.cs7830.gui.charts.*;
 import edu.wright.hendrix11.cs7830.gui.charts.scatter.ScatterChart2Gui;
 import edu.wright.hendrix11.cs7830.gui.charts.scatter.ScatterChartGui;
+import edu.wright.hendrix11.cs7830.gui.linear.LinearTab2Controller;
+import edu.wright.hendrix11.cs7830.gui.linear.LinearTabController;
 import edu.wright.hendrix11.cs7830.gui.tables.StockDataTable;
 import edu.wright.hendrix11.cs7830.gui.tables.StockSummaryTable;
 import javafx.fxml.FXML;
@@ -41,20 +43,20 @@ public class Controller {
     private StockDataTable stockDataTableTabController;
 
     @FXML
-    private MachineController machineTabController;
+    private LinearTabController linearTabController;
 
     @FXML
-    private MachineControllerTwo machineTabTwoController;
+    private LinearTab2Controller linearTab2Controller;
 
     @FXML
     private void initialize() throws IOException, ParseException {
         DowData data = new DowData("dow_jones_index.csv");
 
-        machineTabController.setData(data);
-        machineTabTwoController.setData(data);
+
 
         List<Stock> stocks = data.getStocks();
-
+        linearTabController.setStocks(stocks);
+        linearTab2Controller.setStocks(stocks);
         pieTabController.setStocks(stocks);
         scatterChartTabController.setStocks(stocks);
         scatterChart2TabController.setStocks(stocks);

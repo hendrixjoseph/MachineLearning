@@ -1,25 +1,41 @@
-package edu.wright.hendrix11.cs7830.gui;
+package edu.wright.hendrix11.cs7830.gui.linear;
 
+import edu.wright.hendrix11.cs7830.DowData;
 import edu.wright.hendrix11.cs7830.Stock;
-import edu.wright.hendrix11.cs7830.machine.StockMachine;
+import edu.wright.hendrix11.cs7830.machine.SimpleStockMachine;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
- * @author Joe Hendrix
+ * Created by Joe on 12/1/2016.
  */
-public class SuperMachineController {
+public class LinearTabController {
+
+    @FXML
+    public Slider weekSlider;
+    @FXML
     private TableView resultsTable;
 
-    protected void initialize(TableView resultsTable, TableColumn<Map.Entry<Stock, Integer>, String> symbolColumn) {
-        this.resultsTable = resultsTable;
+    @FXML
+    private TableColumn<Map.Entry<Stock, Integer>, String> symbolColumn;
+
+    private List<Stock> stocks;
+
+    @FXML
+    private void initialize() {
+        weekSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            calculateForWeek(newValue.intValue());
+        });
 
         ObservableList<TableColumn<Map.Entry<Stock, Integer>, Number>> columns = resultsTable.getColumns();
 
@@ -37,29 +53,19 @@ public class SuperMachineController {
         columns.get(column++).setCellValueFactory(param -> new SimpleDoubleProperty(param.getValue().getKey().getPercentIncrease() * 100));
     }
 
-    protected String runMachine(StockMachine machine, boolean nInput, boolean nOutput, TextField learningRateField) {
-        try {
-            double learningRate = Double.parseDouble(learningRateField.getText());
+    public void setStocks(List<Stock> stocks) {
+        this.stocks = stocks;
 
-            if (nInput) {
-                machine.normalizeInputs();
-            }
-
-            if (nOutput) {
-                machine.normalizeOutputs();
-            }
-
-            machine.runMachines(learningRate);
-
-            Set<Map.Entry<Stock, Integer>> results = machine.getResults().entrySet();
-
-            resultsTable.getItems().clear();
-            resultsTable.getItems().addAll(results);
-
-            return "Completed in " + machine.getGenerations() + " generations.";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "Error: " + e.getClass().getName();
-        }
+        calculateForWeek(24);
     }
+
+    public void calculateForWeek(int week) {
+        SimpleStockMachine machine = new SimpleStockMachine(stocks, week);
+
+        Set<Map.Entry<Stock, Integer>> entries = machine.getResults().entrySet();
+
+        resultsTable.getItems().setAll(entries);
+    }
+
+
 }
